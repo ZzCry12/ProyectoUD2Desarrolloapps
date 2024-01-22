@@ -19,6 +19,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class SharedViewModel extends AndroidViewModel {
     private final MutableLiveData<String> checkPermission = new MutableLiveData<>();
     private final MutableLiveData<String> buttonText = new MutableLiveData<>();
     private final MutableLiveData<Boolean> progressBar = new MutableLiveData<>();
+    private final MutableLiveData<LatLng> currentLatLng = new MutableLiveData<>();
 
     private boolean mTrackingLocation;
     FusedLocationProviderClient mFusedLocationClient;
@@ -129,9 +132,10 @@ public class SharedViewModel extends AndroidViewModel {
             String resultMessage = "";
 
             try {
-                addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(),
-                        // En aquest cas, sols volem una única adreça:
-                        1);
+                LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
+                currentLatLng.postValue(latlng);
+                addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+
 
 
                 if (addresses == null || addresses.size() == 0) {
@@ -156,13 +160,24 @@ public class SharedViewModel extends AndroidViewModel {
                     });
                 }
 
-            } catch (IOException ioException) {
-                resultMessage = "Servei no disponible";
-                Log.e("INCIVISME", resultMessage, ioException);
             } catch (IllegalArgumentException illegalArgumentException) {
                 resultMessage = "Coordenades no vàlides";
                 Log.e("INCIVISME", resultMessage + ". " + "Latitude = " + location.getLatitude() + ", Longitude = " + location.getLongitude(), illegalArgumentException);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
+    }
+    private MutableLiveData<FirebaseUser> user = new MutableLiveData<>();;
+
+    public LiveData<FirebaseUser> getUser() {
+        return user;
+    }
+
+    public void setUser(FirebaseUser passedUser) {
+        user.postValue(passedUser);
+    }
+    public MutableLiveData<LatLng> getCurrentLatLng() {
+        return currentLatLng;
     }
 }

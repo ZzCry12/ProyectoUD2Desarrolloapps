@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ProyectoUD2Desarrolloapps</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Opiniones</string>
+    <string name="title_notifications">Mapa</string>
     <string name="location_permission_denied">No concedeixen permisos</string>
     <string name="loading_text">Carregant...</string>
     <string name="stop_tracking_location">Aturar el seguiment de la ubicació</string>
@@ -10,4 +10,17 @@
     <string name="no_address_found">No se a trobat cap adreça</string>
     <string name="service_not_available">Servei no disponible</string>
     <string name="invalid_coordinates">Coordenades no vàlides</string>
+
+    <string-array name="concesionarios">
+        <item>Concesionario 1</item>
+        <item>Concesionario 2</item>
+        <item>Concesionario 3</item>
+        <item>Concesionario 4</item>
+        <item>Concesionario 5</item>
+        <item>Concesionario 6</item>
+        <item>Concesionario 7</item>
+        <item>Concesionario 8</item>
+        <item>Concesionario 9</item>
+        <item>Concesionario 10</item>
+    </string-array>
 </resources>
