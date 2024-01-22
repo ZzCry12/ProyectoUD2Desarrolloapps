@@ -3,4 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="location_permission_denied">No concedeixen permisos</string>
+    <string name="loading_text">Carregant...</string>
+    <string name="stop_tracking_location">Aturar el seguiment de la ubicació</string>
+    <string name="start_tracking_location">Comença a seguir la ubicació</string>
+    <string name="no_address_found">No se a trobat cap adreça</string>
+    <string name="service_not_available">Servei no disponible</string>
+    <string name="invalid_coordinates">Coordenades no vàlides</string>
 </resources>
